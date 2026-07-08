@@ -1,0 +1,22 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.6)
+
+2026-06-12T08:43:42.465+03:00  INFO 32252 --- [weather-backend] [           main] com.weatherapp.WeatherAppApplication     : Starting WeatherAppApplication v1.0.0 using Java 25.0.2 with PID 32252 (C:\Users\gedio\Desktop\backend\target\weather-backend-1.0.0.jar started by gedio in C:\Users\gedio\Desktop\backend)
+2026-06-12T08:43:42.470+03:00  INFO 32252 --- [weather-backend] [           main] com.weatherapp.WeatherAppApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-06-12T08:43:43.720+03:00  INFO 32252 --- [weather-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8092 (http)
+2026-06-12T08:43:43.743+03:00  INFO 32252 --- [weather-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-12T08:43:43.744+03:00  INFO 32252 --- [weather-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-12T08:43:43.771+03:00  INFO 32252 --- [weather-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1249 ms
+2026-06-12T08:43:44.644+03:00  INFO 32252 --- [weather-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8092 (http) with context path '/'
+2026-06-12T08:43:44.664+03:00  INFO 32252 --- [weather-backend] [           main] com.weatherapp.WeatherAppApplication     : Started WeatherAppApplication in 2.668 seconds (process running for 3.264)
+2026-06-12T08:44:03.820+03:00  INFO 32252 --- [weather-backend] [nio-8092-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-12T08:44:03.832+03:00  INFO 32252 --- [weather-backend] [nio-8092-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-12T08:44:03.835+03:00  INFO 32252 --- [weather-backend] [nio-8092-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-06-12T08:44:04.385+03:00  INFO 32252 --- [weather-backend] [nio-8092-exec-1] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 493 ms

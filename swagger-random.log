@@ -1,0 +1,21 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.6)
+
+2026-06-12T08:32:30.452+03:00  INFO 35564 --- [weather-backend] [           main] com.weatherapp.WeatherAppApplication     : Starting WeatherAppApplication v1.0.0 using Java 25.0.2 with PID 35564 (C:\Users\gedio\Desktop\backend\target\weather-backend-1.0.0.jar started by gedio in C:\Users\gedio\Desktop\backend)
+2026-06-12T08:32:30.456+03:00  INFO 35564 --- [weather-backend] [           main] com.weatherapp.WeatherAppApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-06-12T08:32:31.659+03:00  INFO 35564 --- [weather-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-06-12T08:32:31.672+03:00  INFO 35564 --- [weather-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-12T08:32:31.673+03:00  INFO 35564 --- [weather-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-12T08:32:31.700+03:00  INFO 35564 --- [weather-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1175 ms
+2026-06-12T08:32:32.566+03:00  INFO 35564 --- [weather-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 50979 (http) with context path '/'
+2026-06-12T08:32:32.583+03:00  INFO 35564 --- [weather-backend] [           main] com.weatherapp.WeatherAppApplication     : Started WeatherAppApplication in 2.561 seconds (process running for 3.217)
+2026-06-12T08:32:55.598+03:00  INFO 35564 --- [weather-backend] [o-auto-1-exec-8] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-12T08:32:55.600+03:00  INFO 35564 --- [weather-backend] [o-auto-1-exec-8] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-12T08:32:55.604+03:00  INFO 35564 --- [weather-backend] [o-auto-1-exec-8] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms

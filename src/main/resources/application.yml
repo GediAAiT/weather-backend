@@ -1,0 +1,45 @@
+server:
+  address: ${SERVER_ADDRESS:localhost}
+  port: ${SERVER_PORT:8081}
+  compression:
+    enabled: true
+    mime-types: application/json
+    min-response-size: 1024
+
+spring:
+  application:
+    name: weather-backend
+  cache:
+    type: caffeine
+    cache-names: weather,forecast,geocode,highlights
+    caffeine:
+      spec: maximumSize=5000,expireAfterWrite=10m
+
+# Upstream weather + geocoding provider (Open-Meteo: free, no API key required)
+weather:
+  base-url: https://api.open-meteo.com/v1/forecast
+  geocoding-url: https://geocoding-api.open-meteo.com/v1/search
+  upstream-timeout: 2s
+
+# Live country facts/highlights provider.
+country:
+  highlights:
+    wikidata-url: https://query.wikidata.org/sparql
+    wikipedia-summary-url: https://en.wikipedia.org/api/rest_v1/page/summary
+    timeout: 3s
+
+# Languages the API understands for the ?lang= query param.
+app:
+  supported-languages: en,fr,es,nl,de,it,ru,am
+  default-language: en
+
+logging:
+  level:
+    com.weatherapp: INFO
+
+# Springdoc OpenAPI: expose Swagger UI under /api/v1/swagger-ui/index.html
+springdoc:
+  api-docs:
+    path: /api/v1/api-docs
+  swagger-ui:
+    path: /api/v1/swagger-ui

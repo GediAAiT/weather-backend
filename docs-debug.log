@@ -1,0 +1,21 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.6)
+
+2026-06-12T08:33:14.056+03:00  INFO 38820 --- [weather-backend] [           main] com.weatherapp.WeatherAppApplication     : Starting WeatherAppApplication v1.0.0 using Java 25.0.2 with PID 38820 (C:\Users\gedio\Desktop\backend\target\weather-backend-1.0.0.jar started by gedio in C:\Users\gedio\Desktop\backend)
+2026-06-12T08:33:14.063+03:00  INFO 38820 --- [weather-backend] [           main] com.weatherapp.WeatherAppApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-06-12T08:33:15.303+03:00  INFO 38820 --- [weather-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8083 (http)
+2026-06-12T08:33:15.330+03:00  INFO 38820 --- [weather-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-12T08:33:15.330+03:00  INFO 38820 --- [weather-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-12T08:33:15.361+03:00  INFO 38820 --- [weather-backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1240 ms
+2026-06-12T08:33:16.357+03:00  INFO 38820 --- [weather-backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8083 (http) with context path '/'
+2026-06-12T08:33:16.377+03:00  INFO 38820 --- [weather-backend] [           main] com.weatherapp.WeatherAppApplication     : Started WeatherAppApplication in 2.854 seconds (process running for 3.47)
+2026-06-12T08:33:27.796+03:00  INFO 38820 --- [weather-backend] [nio-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-12T08:33:27.808+03:00  INFO 38820 --- [weather-backend] [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-12T08:33:27.811+03:00  INFO 38820 --- [weather-backend] [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
