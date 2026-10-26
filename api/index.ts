@@ -49,7 +49,14 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
     } else if (route === 'weather/overview') {
       const country = requireCountry(required('code'));
       const l = lang();
-      const [weather, highlights] = await Promise.all([getWeather(country, l), getHighlights(country)]);
+      // Weather is the priority: highlights get at most 1s, then fall back to an empty list
+      // (the frontend shows its built-in highlights) so a slow Wikidata never delays the page.
+      const slowHighlights = new Promise<{ highlights: unknown[] }>(resolve =>
+        setTimeout(() => resolve({ highlights: [] }), 1000));
+      const [weather, highlights] = await Promise.all([
+        getWeather(country, l),
+        Promise.race([getHighlights(country), slowHighlights])
+      ]);
       body = { weather, highlights };
     } else if (route === 'weather/batch') {
       const l = lang();
