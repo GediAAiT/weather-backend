@@ -1,0 +1,13 @@
+{
+  "name": "weather-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Weather API served as a Vercel serverless function",
+  "scripts": {
+    "typecheck": "tsc -p api/tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "~5.9.3"
+  }
+}

@@ -1,0 +1,7 @@
+src
+pom.xml
+Dockerfile
+.dockerignore
+*.log
+*.txt
+probe-api-docs.ps1

@@ -13,6 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import io.netty.channel.ChannelOption;
+import org.springframework.http.client.reactive.ReactorClientHttpConnector;
+import reactor.netty.http.client.HttpClient;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -29,15 +33,22 @@ public class CountryHighlightService {
     private static final int DEFAULT_LIMIT = 8;
 
     private final WebClient webClient;
+    private final Duration timeout;
 
     @Value("${country.highlights.wikidata-url}")
     private String wikidataUrl;
 
-    @Value("${country.highlights.timeout:3s}")
-    private Duration timeout = Duration.ofSeconds(3);
-
-    public CountryHighlightService(WebClient webClient) {
-        this.webClient = webClient;
+    public CountryHighlightService(WebClient webClient,
+                                   @Value("${country.highlights.timeout:15s}") Duration timeout) {
+        this.timeout = timeout;
+        // The shared client enforces a 3s read/response timeout, too short for Wikidata SPARQL queries.
+        HttpClient httpClient = HttpClient.create()
+                .compress(true)
+                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 3000)
+                .responseTimeout(timeout);
+        this.webClient = webClient.mutate()
+                .clientConnector(new ReactorClientHttpConnector(httpClient))
+                .build();
     }
 
     @Cacheable(cacheNames = "highlights", key = "#country.code")
@@ -52,7 +63,7 @@ public class CountryHighlightService {
             response.setHighlights(fetchHighlights(country, DEFAULT_LIMIT));
             return response;
         } catch (Exception ex) {
-            log.warn("Could not fetch live highlights for {}", country.getCode(), ex);
+            log.warn("Could not fetch live highlights for {}: {}", country.getCode(), ex.toString());
             return CountryHighlightsResponse.empty(country, SOURCE);
         }
     }
