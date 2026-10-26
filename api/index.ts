@@ -22,7 +22,11 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
   try {
     const url = new URL(req.url ?? '/', 'http://localhost');
     const q = url.searchParams;
-    const segments = url.pathname.replace(/^\/api\/?/, '').split('/').filter(Boolean);
+    // vercel.json rewrites /api/:path* to this function with the path in ?__path=
+    const rewritten = q.get('__path');
+    q.delete('__path');
+    const rawPath = rewritten ?? url.pathname.replace(/^\/api\/?/, '');
+    const segments = rawPath.split('/').filter(Boolean);
     const route = segments.join('/');
 
     const required = (name: string): string => {
