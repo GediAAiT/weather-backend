@@ -108,7 +108,11 @@ async function buildCurrent(latitude: number, longitude: number, countryName: st
   const body = await fetchJson(url, UPSTREAM_TIMEOUT_MS);
   const current = body?.current;
   if (!current) throw new HttpError(502, `No weather data returned for ${placeName}`);
+  return toWeather(current, latitude, longitude, countryName, countryCode, placeName, lang);
+}
 
+function toWeather(current: any, latitude: number, longitude: number, countryName: string,
+                   countryCode: string, placeName: string, lang: string) {
   const weatherCode = num(current.weather_code);
   const { conditionKey, condition } = conditionFor(weatherCode, lang);
   return {
@@ -135,6 +139,24 @@ async function buildCurrent(latitude: number, longitude: number, countryName: st
 export function getWeather(country: Country, lang: string) {
   return cached(`weather:${country.code}:${lang}`, () =>
     buildCurrent(country.latitude, country.longitude, country.name, country.code, country.capital, lang));
+}
+
+/**
+ * Current weather for every country capital using ONE upstream request (Open-Meteo accepts
+ * comma-separated coordinates). Lets the client warm its cache so any country opens instantly.
+ */
+export function getAllWeather(lang: string) {
+  return cached(`all:${lang}`, async () => {
+    const lat = sortedCountries.map(c => c.latitude).join(',');
+    const lon = sortedCountries.map(c => c.longitude).join(',');
+    const url = `${WEATHER_URL}?latitude=${lat}&longitude=${lon}&${CURRENT_PARAMS}&timezone=auto`;
+    const body = await fetchJson(url, 8000);
+    if (!Array.isArray(body) || body.length !== sortedCountries.length) {
+      throw new HttpError(502, 'Unexpected response from the weather provider');
+    }
+    return sortedCountries.map((c, i) =>
+      toWeather(body[i].current, c.latitude, c.longitude, c.name, c.code, c.capital, lang));
+  });
 }
 
 export function getWeatherAt(lat: number, lon: number, placeName: string,

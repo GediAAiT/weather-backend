@@ -1,6 +1,6 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import {
-  HttpError, findCountry, geocode, getCountries, getForecast, getHighlights,
+  HttpError, findCountry, getAllWeather, geocode, getCountries, getForecast, getHighlights,
   getWeather, getWeatherAt, languageList, requireCountry, resolveLang
 } from './_lib/service';
 
@@ -46,6 +46,8 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
 
     if (route === 'weather') {
       body = await getWeather(requireCountry(required('code')), lang());
+    } else if (route === 'weather/all') {
+      body = await getAllWeather(lang());
     } else if (route === 'weather/overview') {
       const country = requireCountry(required('code'));
       const l = lang();
